@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sürpriz Sayfa</title>
+    
+    <style>
+        /* CSS KISMI: Sayfanın Görünümü */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* Tam ekran yüksekliği */
+            width: 100vw;  /* Tam ekran genişliği */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #2c3e50; /* Koyu arka plan */
+            color: #ecf0f1; /* Açık metin rengi */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            transition: background-color 1s ease; /* Renk geçişi için */
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 90%;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #f1c40f; /* Sarı vurgu rengi */
+        }
+
+        p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #musicButton {
+            background-color: #e74c3c; /* Kırmızı buton */
+            color: white;
+        }
+
+        #musicButton:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
+        }
+
+        #startButton {
+            background-color: #2ecc71; /* Yeşil buton */
+            color: white;
+        }
+
+        #startButton:hover {
+            background-color: #27ae60;
+            transform: scale(1.05);
+        }
+
+        /* Ekranları Gizle/Göster */
+        #stage2 {
+            display: none; /* İkinci aşama başlangıçta gizli */
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="backgroundMusic" src="muzik.mp3" preload="auto" loop></audio> 
+
+    <div id="stage1" class="container">
+        <h1>HOŞ GELDİNNN MİNE ÖĞRETMEENNN</h1>
+        <p>Öncelikle müziği açalım alttaki butona tıklar mısın?</p>
+        <button id="musicButton" class="button">Müziği Oynat ve Devam Et!</button>
+    </div>
+
+    <div id="stage2" class="container">
+        <h1>Zafere ulaşmak için zorlukları başarmanız gerekiyor,</h1>
+        <p>bakalım gerçekten bu soruları geçebilecek misin?</p>
+        <button id="startButton" class="button">BAŞLA!</button>
+    </div>
+
+
+    <script>
+        // JAVASCRIPT KISMI: Etkileşim ve Akış Yönetimi
+        
+        const musicButton = document.getElementById('musicButton');
+        const startButton = document.getElementById('startButton');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const stage1 = document.getElementById('stage1');
+        const stage2 = document.getElementById('stage2');
+
+        // 1. Müzik Butonuna Tıklama Olayı
+        musicButton.addEventListener('click', function() {
+            
+            // Müziği Başlat
+            backgroundMusic.play()
+                .then(() => {
+                    console.log('Müzik başarıyla başladı.');
+                    
+                    // Ekranı Değiştir
+                    transitionToStage2();
+                })
+                .catch(error => {
+                    // Tarayıcı bazen yine de engellerse kullanıcıya bilgi verilebilir.
+                    console.error('Müzik başlatılamadı:', error);
+                    // Müzik başlamasa bile akışı devam ettir
+                    transitionToStage2();
+                });
+        });
+
+        // Ekran Değişim Fonksiyonu
+        function transitionToStage2() {
+            // Birinci Aşamayı Gizle
+            stage1.style.display = 'none';
+            
+            // İkinci Aşamayı Göster
+            stage2.style.display = 'block';
+
+            // Arka plan rengini değiştir (isteğe bağlı bir görsel efekt)
+            document.body.style.backgroundColor = '#1abc9c';
+        }
+        
+        // 2. Başla Butonuna Tıklama Olayı (Devamı sizden alacağım)
+        startButton.addEventListener('click', function() {
+            // BURAYA ÜÇÜNCÜ AŞAMAYA GEÇİŞ KODU GELECEK
+            alert('Başla butonuna tıklandı! Şimdi sorulara geçebiliriz.');
+            // Şimdilik sadece bir uyarı gösteriyoruz.
+        });
+
+    </script>
+</body>
+</html>
