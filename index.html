@@ -3,74 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sürpriz Sayfa</title>
+    <title>Mine Öğretmen'e Sürpriz</title>
     
     <style>
-        /* CSS KISMI: Sayfanın Görünümü */
+        /* CSS KISMI: Genel Görünüm ve Renkler (Arka Plan Görseli Eklendi) */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            height: 100vh; /* Tam ekran yüksekliği */
-            width: 100vw;  /* Tam ekran genişliği */
+            height: 100vh;
+            width: 100vw;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #2c3e50; /* Koyu arka plan */
-            color: #ecf0f1; /* Açık metin rengi */
-            font-family: 'Arial', sans-serif;
+            
+            /* YENİ: ARKA PLAN GÖRSELİ */
+            background-image: url('background.jpg'); /* Görselinizin adını buraya yazın */
+            background-size: cover; /* Görseli tüm alanı kaplayacak şekilde boyutlandır */
+            background-position: center center; /* Görseli ortala */
+            background-attachment: fixed; /* Sayfa kaydırılsa bile görseli sabit tut */
+            background-repeat: no-repeat; /* Görselin tekrarlanmasını engelle */
+
+            color: #ecf0f1;
+            font-family: 'Open Sans', sans-serif;
             text-align: center;
-            transition: background-color 1s ease; /* Renk geçişi için */
+            /* background-color artık görselin yüklenmemesi durumunda yedek olarak kalır */
+            background-color: #34495e; 
+            transition: background-color 1s ease; /* Renk geçişi bu durumda daha az belirgin olacaktır */
         }
 
-        .container {
-            padding: 20px;
+        .stage {
+            padding: 30px;
             max-width: 90%;
+            border-radius: 15px;
+            /* Arka plan görseli olduğu için bu kutuların daha belirgin olması gerekebilir */
+            background: rgba(0, 0, 0, 0.7); /* Koyu, daha opak bir arka plan */
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7); /* Daha belirgin gölge */
         }
 
         h1 {
-            font-size: 3em;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em;
             margin-bottom: 20px;
-            color: #f1c40f; /* Sarı vurgu rengi */
+            color: #f1c40f; 
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Metni daha okunur yapar */
         }
 
         p {
-            font-size: 1.5em;
-            margin-bottom: 30px;
+            font-size: 1.6em;
+            margin-bottom: 40px;
+            font-weight: 600;
         }
 
         .button {
-            padding: 15px 30px;
-            font-size: 1.2em;
+            padding: 18px 35px;
+            font-size: 1.4em;
+            font-weight: 700;
             border: none;
-            border-radius: 8px;
+            border-radius: 50px; 
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
         }
 
         #musicButton {
-            background-color: #e74c3c; /* Kırmızı buton */
+            background-color: #e74c3c; 
             color: white;
         }
-
         #musicButton:hover {
             background-color: #c0392b;
-            transform: scale(1.05);
         }
 
         #startButton {
-            background-color: #2ecc71; /* Yeşil buton */
+            background-color: #2ecc71; 
             color: white;
         }
-
         #startButton:hover {
             background-color: #27ae60;
-            transform: scale(1.05);
         }
 
-        /* Ekranları Gizle/Göster */
-        #stage2 {
-            display: none; /* İkinci aşama başlangıçta gizli */
+        #stage2, #stage3 {
+            display: none; 
+        }
+
+        #stage3 {
+            background: rgba(255, 255, 255, 0.9); /* Daha opak beyaz arka plan */
+            color: #2c3e50; 
+            min-height: 400px;
+            width: 80%;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #stage3 h2 {
+            color: #2980b9;
+            text-shadow: none; /* Açık arka planda gölgeye gerek yok */
         }
     </style>
 </head>
@@ -78,16 +113,23 @@
 
     <audio id="backgroundMusic" src="muzik.mp3" preload="auto" loop></audio> 
 
-    <div id="stage1" class="container">
+    <div id="stage1" class="stage">
         <h1>HOŞ GELDİNNN MİNE ÖĞRETMEENNN</h1>
         <p>Öncelikle müziği açalım alttaki butona tıklar mısın?</p>
-        <button id="musicButton" class="button">Müziği Oynat ve Devam Et!</button>
+        <button id="musicButton" class="button">Müziği Oynat ve Devam Et! 🎵</button>
     </div>
 
-    <div id="stage2" class="container">
+    <div id="stage2" class="stage">
         <h1>Zafere ulaşmak için zorlukları başarmanız gerekiyor,</h1>
         <p>bakalım gerçekten bu soruları geçebilecek misin?</p>
-        <button id="startButton" class="button">BAŞLA!</button>
+        <button id="startButton" class="button">BAŞLA! 🚀</button>
+    </div>
+    
+    <div id="stage3" class="stage">
+        <h2 style="font-size: 2em; color: #2980b9;">Şimdi Sınav Başlıyor!</h2>
+        <p id="questionText" style="font-size: 1.4em; margin-bottom: 20px;">İlk soru buraya gelecek...</p>
+        <div id="answerArea">
+            </div>
     </div>
 
 
@@ -99,45 +141,46 @@
         const backgroundMusic = document.getElementById('backgroundMusic');
         const stage1 = document.getElementById('stage1');
         const stage2 = document.getElementById('stage2');
+        const stage3 = document.getElementById('stage3');
+        const body = document.body;
 
         // 1. Müzik Butonuna Tıklama Olayı
         musicButton.addEventListener('click', function() {
-            
-            // Müziği Başlat
             backgroundMusic.play()
                 .then(() => {
-                    console.log('Müzik başarıyla başladı.');
-                    
-                    // Ekranı Değiştir
+                    console.log('Müzik başladı.');
                     transitionToStage2();
                 })
                 .catch(error => {
-                    // Tarayıcı bazen yine de engellerse kullanıcıya bilgi verilebilir.
                     console.error('Müzik başlatılamadı:', error);
-                    // Müzik başlamasa bile akışı devam ettir
+                    // Müzik başarısız olsa bile devam et
                     transitionToStage2();
                 });
         });
 
-        // Ekran Değişim Fonksiyonu
+        // 2. Aşamaya Geçiş Fonksiyonu
         function transitionToStage2() {
-            // Birinci Aşamayı Gizle
             stage1.style.display = 'none';
-            
-            // İkinci Aşamayı Göster
             stage2.style.display = 'block';
-
-            // Arka plan rengini değiştir (isteğe bağlı bir görsel efekt)
-            document.body.style.backgroundColor = '#1abc9c';
+            // Arka plan görseli sabit olduğu için body.style.backgroundColor değişikliği iptal edildi.
+            // Eğer isterseniz görsel üzerine bir overlay ekleyerek renk tonunu değiştirebiliriz.
         }
         
-        // 2. Başla Butonuna Tıklama Olayı (Devamı sizden alacağım)
+        // 3. Başla Butonuna Tıklama Olayı
         startButton.addEventListener('click', function() {
-            // BURAYA ÜÇÜNCÜ AŞAMAYA GEÇİŞ KODU GELECEK
-            alert('Başla butonuna tıklandı! Şimdi sorulara geçebiliriz.');
-            // Şimdilik sadece bir uyarı gösteriyoruz.
+            transitionToStage3();
         });
-
+        
+        // 3. Aşamaya Geçiş Fonksiyonu (Sorular)
+        function transitionToStage3() {
+            stage2.style.display = 'none';
+            stage3.style.display = 'flex'; // stage3'ü göster
+            // body.style.backgroundColor değişikliği iptal edildi.
+            
+            // BURADA İLK SORUYU YÜKLEME FONKSİYONU ÇAĞRILACAK
+            console.log("Sorular aşamasına geçildi.");
+        }
+        
     </script>
 </body>
 </html>
