@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğretmenler Günü Sürprizi! 🎉</title>
+    
+    <style>
+        /* CSS Kodu: Uzay Temasına Tam Uyumlu */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
+
+        body {
+            background-color: #0A0A30; 
+            color: white;
+            font-family: 'Open Sans', sans-serif;
+            margin: 0; padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            
+            /* GÜNCEL ARKA PLAN */
+            background-image: url('image_21c296.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow-y: auto;
+            position: relative; /* Yıldızlar için gerekli */
+        }
+
+        /* Kutu Teması (Arka Planı Göstermek İçin ÇOK Saydam) */
+        .container {
+            padding: 30px 20px;
+            max-width: 95%; 
+            width: 850px;
+            
+            background: rgba(10, 10, 48, 0.3); 
+            backdrop-filter: blur(5px); 
+            border-radius: 20px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.9), 0 0 15px #FFD700; 
+            margin: 20px;
+            z-index: 10; 
+            position: relative; 
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3em; 
+            color: #FFD700; 
+            text-shadow: 3px 3px 0 #0A0A30; 
+            margin-bottom: 25px;
+        }
+        
+        #special-message {
+            font-size: 1.8em; 
+            font-weight: 700;
+            color: white;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-top: 2px solid #3498DB; 
+            border-bottom: 2px solid #3498DB;
+            padding: 15px 0;
+        }
+        
+        #student-note {
+            font-size: 1.1em; 
+            line-height: 1.5;
+            color: #ecf0f1;
+            white-space: pre-wrap; 
+            text-align: left;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.5); 
+            border-radius: 10px;
+            margin-top: 25px;
+            border: 1px dashed #FFD700;
+        }
+
+        /* Mobil Uyum */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            #special-message {
+                font-size: 1.4em;
+            }
+            #student-note {
+                font-size: 1em;
+            }
+            p {
+                font-size: 1.2em !important;
+            }
+        }
+
+        /* YENİ: YANIP SÖNEN PAPATYA/YILDIZ EFEKTİ İÇİN STİL */
+        .star-container {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none; 
+            overflow: hidden; 
+            z-index: 5; 
+        }
+
+        .star {
+            position: absolute;
+            background-color: #FFD700; /* Altın rengi */
+            width: 4px; /* Merkez boyut */
+            height: 4px; /* Merkez boyut */
+            opacity: 0; 
+            animation: twinkle 4s infinite ease-in-out; 
+            box-shadow: 0 0 5px #FFD700, /* Merkez parıltı */
+                        0 -8px 0 0 #FFD700, /* Yukarı kol */
+                        0 8px 0 0 #FFD700,  /* Aşağı kol */
+                        -8px 0 0 0 #FFD700, /* Sol kol */
+                        8px 0 0 0 #FFD700;  /* Sağ kol */
+            /* Kolların yayılması için rastgele boyutlandırma kullanılır */
+            transform: scale(0.7); 
+        }
+
+        /* Yanıp sönme animasyonu */
+        @keyframes twinkle {
+            0%, 100% { 
+                opacity: 0; 
+                transform: scale(0.5) rotate(0deg); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2) rotate(45deg); /* Dönüş efekti ile daha dinamik */
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <audio id="surpriseMusic" src="muzik.mp3" preload="auto" loop></audio> 
+
+    <div class="star-container" id="starContainer"></div>
+
+    <div class="container">
+        <p style="font-size: 1.5em; margin-bottom: 10px;">Tebrikler! Mars'ın Kapsülünün Kilidini Açarak Sevimli Dostunuzla Uranüs'ün Süper Kahramanı Oldunuz :)</p>
+        
+        <div id="special-message">
+            ÖĞRETMENLER GÜNÜNÜZZZZZ KUTLU OLSUUUUUUUN MİNE ÖĞRETMEEENNNNİM !!! 🎉
+        </div>
+        
+        <p style="font-size: 1.3em; margin-top: 30px;">Bu sürpriz, sizin için hazırladığım küçük bir teşekkürdü.</p>
+        
+        <div id="student-note">
+            "Mine öğreetmenimm,
+            
+            Bu küçük sınavı geçmeniz beni hiç şaşırtmadı! Çünkü siz, bana sadece matematiği değil, aynı zamanda hayatın zorlukları karşısında nasıl güçlü duracağımı da öğrettiniz. Tebessümünüz, sabrınız, bilginiz, esprileriniz ve daha saymadığım bir çok yönünüzle bu dünyaya (Uranüs'e olmaması biraz üzdü :)) ) birini kazandırdığınız için teşekkür ederim. Öğretmen kelimesinin anlamını ne sözlükten ne ansiklopediden ne de internetten aratmadan bana anlattınız. Öyle ki her öğretmen kelimesi geçince iki noktadan sonra gelen bir açıklama değil de aklıma bir insan geliyor. Bu yüzden diğer tüm MEB personelinden çok siz hakediyorsunuz bu günü :)) . Uranüs'e uzanan bu hayat mücadelenizde hiç altedilemeyen bir süper kahraman olmanızı diliyorum. 
+            
+            Umarım bu küçük sürpriz yüzünüzde bir tebessüm yaratmıştır.
+            
+            Saygılarımla,
+            Öğrenciniz."
+            
+        </div>
+
+    </div>
+
+    <script>
+        // MÜZİK OTOMATİK BAŞLATMA MEKANİZMASI
+        const surpriseMusic = document.getElementById('surpriseMusic');
+
+        surpriseMusic.play().catch(error => {
+            document.addEventListener('click', function() {
+                surpriseMusic.play();
+            }, { once: true });
+        });
+
+        // YENİ: YANIP SÖNEN YILDIZ/ÇİÇEK EFEKTİ İÇİN JAVASCRIPT
+        const starContainer = document.getElementById('starContainer');
+        const numberOfStars = 30; // Oluşturulacak yıldız sayısı
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.className = 'star';
+            starContainer.appendChild(star);
+
+            // Rastgele konum
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+
+            // Rastgele animasyon gecikmesi ve süresi
+            star.style.animationDelay = `${Math.random() * -4}s`; // Negatif gecikme ile farklı zamanlarda başlar
+            star.style.animationDuration = `${Math.random() * 3 + 2}s`; // 2s ile 5s arası süre
+        }
+
+        // Belirtilen sayıda yıldız oluştur
+        for (let i = 0; i < numberOfStars; i++) {
+            createStar();
+        }
+    </script>
+</body>
+</html>

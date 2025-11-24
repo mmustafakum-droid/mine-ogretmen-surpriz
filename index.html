@@ -3,109 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mine Öğretmen'e Sürpriz</title>
+    <title>Mine Öğretmen'in Uzay Macerası</title>
     
     <style>
-        /* CSS KISMI: Genel Görünüm ve Renkler (Arka Plan Görseli Eklendi) */
+        /* CSS KISMI: Profesyonel Tema ve Uzay Uyumlu Konumlandırma */
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap');
 
         body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            
-            /* YENİ: ARKA PLAN GÖRSELİ */
-            background-image: url('background.jpg'); /* Görselinizin adını buraya yazın */
-            background-size: cover; /* Görseli tüm alanı kaplayacak şekilde boyutlandır */
-            background-position: center center; /* Görseli ortala */
-            background-attachment: fixed; /* Sayfa kaydırılsa bile görseli sabit tut */
-            background-repeat: no-repeat; /* Görselin tekrarlanmasını engelle */
-
-            color: #ecf0f1;
-            font-family: 'Open Sans', sans-serif;
-            text-align: center;
-            /* background-color artık görselin yüklenmemesi durumunda yedek olarak kalır */
-            background-color: #34495e; 
-            transition: background-color 1s ease; /* Renk geçişi bu durumda daha az belirgin olacaktır */
+            /* Arka plan görseli ve genel ayarlar */
+            margin: 0; padding: 0; height: 100vh; width: 100vw;
+            display: flex; justify-content: center; align-items: center;
+            background-image: url('background.jpg'); 
+            background-size: cover; background-position: center;
+            background-color: #0A0A30; /* Derin Uzay Mavi/Siyah */
+            color: #F0F0F0; font-family: 'Open Sans', sans-serif;
+            text-align: center; transition: background-color 1s ease; 
+            position: relative; 
+            overflow: hidden; 
         }
 
+        /* Aşama Kutuları (Uzay Kapsülü Efekti) */
         .stage {
-            padding: 30px;
-            max-width: 90%;
-            border-radius: 15px;
-            /* Arka plan görseli olduğu için bu kutuların daha belirgin olması gerekebilir */
-            background: rgba(0, 0, 0, 0.7); /* Koyu, daha opak bir arka plan */
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7); /* Daha belirgin gölge */
+            padding: 30px; max-width: 90%; width: 85%; border-radius: 15px;
+            box-sizing: border-box; 
+            background: rgba(10, 10, 48, 0.9); /* KOYU VE OPAK UZAY KUTUSU */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 15px #FFD700; /* Altın Işığı */
+            
+            position: absolute; 
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%); 
         }
-
-        h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            color: #f1c40f; 
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Metni daha okunur yapar */
-        }
-
-        p {
-            font-size: 1.6em;
-            margin-bottom: 40px;
-            font-weight: 600;
-        }
-
-        .button {
-            padding: 18px 35px;
-            font-size: 1.4em;
-            font-weight: 700;
-            border: none;
-            border-radius: 50px; 
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-        }
-
-        .button:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-        }
-
-        #musicButton {
-            background-color: #e74c3c; 
-            color: white;
-        }
-        #musicButton:hover {
-            background-color: #c0392b;
-        }
-
-        #startButton {
-            background-color: #2ecc71; 
-            color: white;
-        }
-        #startButton:hover {
-            background-color: #27ae60;
-        }
-
-        #stage2, #stage3 {
+        
+        #stage2, #stage3, #stage4, #stage5 {
             display: none; 
         }
 
+        /* Başlıklar ve Metin Stilleri */
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5em; margin-bottom: 20px;
+            color: #FFD700; /* Cosmic Gold */
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+        }
+        h2 {
+            color: #3498DB; /* Gök Mavisi */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2em; margin-bottom: 30px;
+        }
+        p {
+            font-size: 1.6em; margin-bottom: 40px; font-weight: 600;
+        }
+
+        /* Butonların Ortak Stili (Gelişmiş) */
+        .button {
+            padding: 18px 35px; font-size: 1.4em; font-weight: 700;
+            border: 2px solid #FFD700; /* Altın Çerçeve */
+            border-radius: 50px; cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            margin: 10px; 
+        }
+
+        .button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5); /* Hoverda altın parlama */
+        }
+
+        /* Buton Renkleri */
+        #musicButton { background-color: #C0392B; color: white; border-color: #E74C3C; } /* Kırmızı Alarm */
+        #musicButton:hover { background-color: #E74C3C; }
+
+        #startButton { background-color: #27AE60; color: white; border-color: #2ECC71; } /* Yeşil Onay */
+        #startButton:hover { background-color: #2ECC71; }
+        
+        /* Cevap Butonları (Görev Seçimi) */
+        .answer-button {
+            background-color: #34495E; /* Koyu Gri */
+            color: white; width: 100%; margin-bottom: 15px; font-size: 1.2em;
+            border-color: #3498DB; /* Mavi Çerçeve */
+        }
+        .answer-button:hover {
+            background-color: #3498DB; /* Maviye döner */
+        }
+
+        /* 3. Aşama (Sınav) Stili - Metin netliği için beyaz taban */
         #stage3 {
-            background: rgba(255, 255, 255, 0.9); /* Daha opak beyaz arka plan */
-            color: #2c3e50; 
+            background: rgba(255, 255, 255, 0.95); /* Neredeyse tam beyaz */
+            color: #0A0A30; 
             min-height: 400px;
-            width: 80%;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-            display: flex;
             flex-direction: column;
             justify-content: center;
         }
-        #stage3 h2 {
-            color: #2980b9;
-            text-shadow: none; /* Açık arka planda gölgeye gerek yok */
+        #stage3 #questionText {
+            font-size: 1.8em; font-weight: 600; margin-bottom: 30px; color: #34495e;
+        }
+
+        /* 4. Aşama (Yükleme) Stili */
+        #stage4 {
+            color: #FFD700;
+            background: rgba(10, 10, 48, 0.9);
+        }
+
+        /* 5. Aşama (Sonuç) Stili - Düşük Başarı için mavi tema */
+        #stage5 {
+            background: rgba(52, 152, 219, 0.9); 
+            color: white;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.9), 0 0 15px #3498DB;
         }
     </style>
 </head>
@@ -114,27 +117,37 @@
     <audio id="backgroundMusic" src="muzik.mp3" preload="auto" loop></audio> 
 
     <div id="stage1" class="stage">
-        <h1>HOŞ GELDİNNN MİNE ÖĞRETMEENNN</h1>
-        <p>Öncelikle müziği açalım alttaki butona tıklar mısın?</p>
-        <button id="musicButton" class="button">Müziği Oynat ve Devam Et! 🎵</button>
+        <h1>HOŞ GELDİN, URANÜS'ÜN KAŞİFİ MİNE ÖĞRETMEN</h1>
+        <p>Uranüs'ü kurtarma görevine başlamadan önce bir müzik başlatalım :) Alttaki butona tıklar mısın?</p>
+        <button id="musicButton" class="button">Müziği Oynat 🎵</button>
     </div>
 
     <div id="stage2" class="stage">
-        <h1>Zafere ulaşmak için zorlukları başarmanız gerekiyor,</h1>
-        <p>bakalım gerçekten bu soruları geçebilecek misin?</p>
+        <h1>GÖREV BAŞLANGICI: MATEMATİK ZORLUKLARI</h1>
+        <p>Mars'ın kapsülü kilitli. Mars'a ulaşmak için, 5 farklı boyuttan gelen kritik matematik kodlarını başarıyla kırmanız gerekiyor. Hazır mısın?</p>
         <button id="startButton" class="button">BAŞLA! 🚀</button>
     </div>
     
     <div id="stage3" class="stage">
-        <h2 style="font-size: 2em; color: #2980b9;">Şimdi Sınav Başlıyor!</h2>
-        <p id="questionText" style="font-size: 1.4em; margin-bottom: 20px;">İlk soru buraya gelecek...</p>
-        <div id="answerArea">
-            </div>
+        <h2>KOD KIRMA <span id="questionNumber">1</span> / 5</h2>
+        <p id="questionText"></p>
+        <div id="answerArea"></div>
+    </div>
+
+    <div id="stage4" class="stage">
+        <h1 style="color: #FFD700;">VERİ ANALİZİ YAPILIYOR...</h1>
+        <p style="color: white; font-size: 1.4em;">Cevaplar uzay-zaman sürekliliğinde kontrol ediliyor. Lütfen bekleyin.</p>
+    </div>
+
+    <div id="stage5" class="stage">
+        <h1>GÖREV TAMAMLANDI!</h1>
+        <p id="resultText" style="margin-bottom: 20px;"></p>
+        <p style="font-size: 1.8em; font-weight: bold; margin-top: 30px;">"Önemli olan her zaman denemektir. Teşekkürler, Mine Öğretmen."</p>
     </div>
 
 
     <script>
-        // JAVASCRIPT KISMI: Etkileşim ve Akış Yönetimi
+        // JAVASCRIPT KISMI: Akış Yönetimi ve Oyun Mekanizması (Değişmedi)
         
         const musicButton = document.getElementById('musicButton');
         const startButton = document.getElementById('startButton');
@@ -142,45 +155,123 @@
         const stage1 = document.getElementById('stage1');
         const stage2 = document.getElementById('stage2');
         const stage3 = document.getElementById('stage3');
+        const stage4 = document.getElementById('stage4');
+        const stage5 = document.getElementById('stage5');
+        const questionText = document.getElementById('questionText');
+        const questionNumber = document.getElementById('questionNumber');
+        const answerArea = document.getElementById('answerArea');
+        const resultText = document.getElementById('resultText');
         const body = document.body;
+        
+        // Soru Veri Yapısı (5 Soru)
+        const questions = [
+            {
+                text: "EN SEVDİĞİNİZ GEZEGEN HANGİSİDİR?",
+                answers: ["DÜNYA", "URANÜS", "VENÜS"],
+                correct: "URANÜS"
+            },
+            {
+                text: "BİR ÇEMBERİN ÇEVRESİ NEYE EŞİTTİR?",
+                answers: ["3'E", "Pİ SAYISINA", "SONSUZLUĞA"],
+                correct: "SONSUZLUĞA"
+            },
+            {
+                text: "DÜNYANIN EN GÜZEL ÜLKESİ HANGİSİDİR?",
+                answers: ["AKYURT", "TÜRKİYE", "AFŞİN"],
+                correct: "AKYURT"
+            },
+            {
+                text: "EN SEVDİĞİNİZ ÖĞRENCİLER HANGİ OKULUNUZDAYDI?",
+                answers: ["MUHAMMED HAMDİ YAZIR AİHL", "AFŞİN ANADOLU LİSESİ", "ARITAŞ ÖZTÜRK ANADOLU LİSESİ"],
+                correct: "MUHAMMED HAMDİ YAZIR AİHL"
+            },
+            {
+                text: "EVRENDEKİ EN TATLI KEDİNİN İSMİ NEDİR?",
+                answers: ["GARFİELD", "ÇİZMELİ KEDİ", "MARS"],
+                correct: "MARS"
+            }
+        ];
+        
+        let currentQuestionIndex = 0;
+        let correctAnswersCount = 0;
 
-        // 1. Müzik Butonuna Tıklama Olayı
+        // --- AŞAMA GEÇİŞ FONKSİYONU ---
+        function transitionToStage(targetStage) {
+            const stages = [stage1, stage2, stage3, stage4, stage5];
+            stages.forEach(s => s.style.display = 'none');
+            if (targetStage) {
+                targetStage.style.display = (targetStage === stage3) ? 'flex' : 'block';
+            }
+        }
+
+        // --- OLAY DİNLEYİCİLERİ ---
         musicButton.addEventListener('click', function() {
-            backgroundMusic.play()
-                .then(() => {
-                    console.log('Müzik başladı.');
-                    transitionToStage2();
-                })
-                .catch(error => {
-                    console.error('Müzik başlatılamadı:', error);
-                    // Müzik başarısız olsa bile devam et
-                    transitionToStage2();
-                });
+            backgroundMusic.play().catch(error => console.error("Müzik hatası:", error));
+            transitionToStage(stage2);
         });
 
-        // 2. Aşamaya Geçiş Fonksiyonu
-        function transitionToStage2() {
-            stage1.style.display = 'none';
-            stage2.style.display = 'block';
-            // Arka plan görseli sabit olduğu için body.style.backgroundColor değişikliği iptal edildi.
-            // Eğer isterseniz görsel üzerine bir overlay ekleyerek renk tonunu değiştirebiliriz.
-        }
-        
-        // 3. Başla Butonuna Tıklama Olayı
         startButton.addEventListener('click', function() {
-            transitionToStage3();
+            transitionToStage(stage3);
+            loadQuestion(currentQuestionIndex); 
         });
-        
-        // 3. Aşamaya Geçiş Fonksiyonu (Sorular)
-        function transitionToStage3() {
-            stage2.style.display = 'none';
-            stage3.style.display = 'flex'; // stage3'ü göster
-            // body.style.backgroundColor değişikliği iptal edildi.
-            
-            // BURADA İLK SORUYU YÜKLEME FONKSİYONU ÇAĞRILACAK
-            console.log("Sorular aşamasına geçildi.");
+
+        // --- SORU-CEVAP MEKANİZMASI ---
+        function loadQuestion(index) {
+            answerArea.innerHTML = ''; 
+            if (index >= questions.length) {
+                transitionToStage4();
+                return;
+            }
+
+            const q = questions[index];
+            questionNumber.textContent = index + 1;
+            questionText.textContent = q.text;
+
+            q.answers.forEach(answer => {
+                const button = document.createElement('button');
+                button.textContent = answer;
+                button.className = 'button answer-button';
+                button.addEventListener('click', () => handleAnswer(answer, q.correct));
+                answerArea.appendChild(button);
+            });
         }
-        
+
+        function handleAnswer(selectedAnswer, correctAnswer) {
+            if (selectedAnswer === correctAnswer) {
+                correctAnswersCount++;
+            }
+            currentQuestionIndex++;
+            loadQuestion(currentQuestionIndex);
+        }
+
+        // --- ÖZEL AŞAMALAR (4 & 5) ---
+        function transitionToStage4() {
+            transitionToStage(stage4);
+            
+            setTimeout(() => {
+                const totalQuestions = questions.length;
+                const percentage = (correctAnswersCount / totalQuestions) * 100;
+
+                if (percentage >= 80) {
+                    // YÜKSEK BAŞARI: Yeni sürpriz sayfasına yönlendir!
+                    window.location.href = 'surprise.html';
+                } else {
+                    // DÜŞÜK BAŞARI: Mevcut Stage 5'e geçilir.
+                    transitionToStage5();
+                }
+            }, 3000); 
+        }
+
+        function transitionToStage5() {
+            transitionToStage(stage5);
+            
+            const totalQuestions = questions.length;
+            const correct = correctAnswersCount;
+            
+            const message = `Görevi tamamladınız! ${totalQuestions} sorudan ${correct}'sini doğru bildiniz.`;
+            resultText.innerHTML = message;
+            body.style.backgroundColor = '#3498DB'; 
+        }
     </script>
 </body>
 </html>
